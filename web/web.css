@@ -1,0 +1,83 @@
+/* CSS declarations go here */
+
+form{
+	padding-top: 100px;
+}
+.map-container {
+  width: 100px;
+  max-width: 100%;
+  height: 100px;
+}
+.col-sm-8 {
+  max-width: 600px;
+  margin: 0 auto; 
+  margin-top: -22px;
+  padding-top: 50px;
+  min-height: 100%;
+ 
+}
+ul{
+	list-style-type: none;
+	padding-top: 50px;
+}
+label{
+	font-size: 12px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.task{
+
+	margin: 0px 1px 4px 0px;
+	font-size: 9px;
+	letter-spacing: 1px;
+	padding: 7px 7px 7px 7px;
+	background: white;
+
+	-webkit-transition: all .5; 
+	text-align:left;
+	text-transform: uppercase;
+}
+
+h1{
+	margin:0px;
+	font-size: 25px;
+	background: #162F40;
+	padding: 10px;
+	padding-top: 20px;
+	padding-bottom:10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+.btn:hover{
+	background-color: #c5c3c3;
+}
+.task:hover{
+	box-shadow: 1px solid;
+}
+.btn{
+	margin-top: 20px;
+}
+body{
+	background: white;
+	font-family: sans-serif;
+}
+.names{
+	color: #c5c3c3;
+}
+.new-task input:focus{
+  outline: 0;
+  border-color: white;
+  box-shadow: 0 0 10px #c5c3c3;
+}
+.delete{
+	position: relative;
+	padding-left: 20px;
+	padding-right: 5px;
+	font-size: 12px;
+}
+
+header{
+	text-align: center;
+}

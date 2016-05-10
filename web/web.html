@@ -1,0 +1,66 @@
+<head>
+	<title>WEB</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<template name ="home">
+	<h1 id="fixthecity">Fix The City </h1>
+		<div class="container-fluid">
+			<div class="table">
+				<table class="table table-bordered table-responsive">
+					<!--<thead><tr>
+						<th>Topic</th>
+						<th>Details</th>
+						<th>Time </th>
+						<th>Location </th>
+						<th>Image </th>
+						<th>Delete</th>
+					</tr></thead>-->
+					<tbody>
+					{{#each list}}
+						{{>entry}}
+					{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{> reactiveTable settings=settings}}
+		</div>
+		</template>
+
+<template name ="show">
+	
+	<div class="container-fluid">
+			<div class="table">
+				<table class="table table-bordered table-responsive">
+					<thead><tr>
+						<th>Topic</th>
+						<th>Details</th>
+						<th>Time </th>
+						<th>Location </th>
+						<th>Image </th>
+						<th>Delete</th>
+					</tr></thead>
+					<tbody>
+					{{#each list}}
+						{{>entry}}
+					{{/each}}
+					</tbody>
+				</table>
+			</div>
+	
+	</div>
+</template>
+
+<template name="entry">
+	
+    <tr>
+    <td>{{topic}} </td>
+    <td> {{details}}</td> 
+    <td >{{createdAt}}</td> 
+    <td> {{latitude}}, {{longitude}}</td>
+    <img class="photo" width="100" src={{image}}>
+
+    <td><span class="delete  glyphicon glyphicon-trash" aria-hidden="true"></span></td>
+   </tr>
+</template>

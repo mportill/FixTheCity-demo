@@ -1,0 +1,134 @@
+<head>
+  <title>Mobile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body class="text-muted">
+	<h1>MOBILE: Form Entry</h1>
+		<div class="container-fluid">
+			{{>formHere}}
+				
+			
+		</div>	
+</body>
+
+<template name="formHere">
+
+<form class="newTask">
+	
+{{#if (session 'showMainMenu')}}
+  {{> MainMenu}}
+{{/if}}
+{{#if (session 'showPhoto')}}
+  {{> PhotoPage}}
+{{/if}}
+{{#if (session 'showGPS')}}
+	{{ > GPSPage}}
+{{/if}}
+
+{{#if (session 'showCategories')}}
+  {{> CategoryPage}}
+{{/if}}
+{{#if (session 'showTopic')}}
+  {{> TopicPage}}
+{{/if}}
+{{#if (session 'showDetails')}}
+  {{> OptionalDetailsPage}}
+{{/if}}
+{{#if (session 'showConfirmation')}}
+
+  {{> ConfirmationPage}}
+{{/if}}
+						
+						
+	
+	        	
+	        		
+	      		</form>
+</template>
+
+<template name="example">
+
+    
+    
+</template>
+<template name="MainMenu">
+<h2>FixTheCity </h2>
+	<button  class="btn btn-secondary submitareport"> Submit A Report </button>
+</template>
+<template name="ConfirmationPage">
+   <h2>Report Summary:</h2>
+   {{category}}<br>
+
+   {{topic}} at ({{latitude}},{{longitude}}) <br>
+
+
+
+<button type="submit" class="btn btn-secondary" value="submit">submit</button>
+</template>
+
+<template name="PhotoPage">
+<h2>Photo</h2><br>
+<label>Please take a photo of the issue you would like to report </label><br>
+<figure class="photo" style="display:none" > <img width="100" class="photo"></figure><br>
+
+<button class="btn btn-secondary takePhoto">Take Photo</button><br>
+<button class="btn btn-secondary retakePhoto"  style="display:none">Retake Photo</button><br>
+<button class="btn btn-secondary next"  style="display:none">Next Step</button>
+		   
+</template>
+
+<template name="CategoryPage">
+<h2>Category</h2><br>
+<label>Please select the category this issue best falls under </label><br><br>
+<!-- Start of category-->
+						<input type="radio" class="form control" name ="category" value ="Grafitti"/>Grafitti<br>
+						<input type="radio" class="form control" name ="category" value ="Park"/>Park<br>
+						<input type="radio" class="form control" name ="category" value ="Pothole"/>Pothole<br>
+						<input type="radio" class="form control" name ="category" value ="Vehicle"/>Vehicle<br>
+						<input type="radio" class="form control" name ="category" value ="Sewer Spills"/>Sewer Spills<br>
+						<input type="radio" class="form control" name ="category" value ="Streetlights"/>Streetlights<br>
+						<input type="radio" class="form control" name ="category" value ="Traffic Signals"/>Traffic Signals<br>
+						<input type="radio" class="form control" name ="category" value ="Illegal Dumping"/>Illegal Dumping<br>
+						<input type="radio" class="form control" name ="category" value ="Trees"/>Trees<br>
+						<input type="radio" class="form control" name ="category" value ="Sidewalks"/>Sidewalks<br>
+						<input type="radio" class="form control" name ="category" value ="Other"/>Other<br>
+<!--End of category-->
+<button class="btn btn-secondary next"  style="display:none">Next Step</button>
+</template>
+
+<template name="TopicPage">
+<h2> Issue </h2>
+<label>Please describe the issue in a few words</label><br><br>
+						<input type="text" class="form-control" name="topic" id="topic" placeholder="e.g. Grafitti on El Camino..." /><br>
+<button class="btn btn-secondary next" >Next Step</button>
+</template>
+<template name="GPSPage">
+<h2> GPS </h2>
+{{> map}}
+
+<button class="btn btn-secondary next" >Next Step</button>
+
+</template>
+<template name="map">
+	<label>Please confirm GPS location</label>
+  <div class="map-container">
+    {{#unless geolocationError}}
+    
+      {{> googleMap name="map" options=mapOptions}}
+    {{else}}
+    	map does't show
+      Geolocation failed: {{geolocationError}}
+    {{/unless}}
+  </div>
+</template>
+<template name="OptionalDetailsPage">
+<h2>Extra Details </h2>
+<label> Optional: Provide extra detail below </label><br><br>
+		        		<input type="text" class="form-control" name="details" placeholder="It's on the side of a brick building." /> <br>
+		        		<input type="text" class="form-control" name="username" placeholder="John Doe" /> <br>
+<button class="btn btn-secondary next" >Submit</button>
+</template>
