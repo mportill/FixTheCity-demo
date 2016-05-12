@@ -6,17 +6,15 @@ if (Meteor.isClient) {
   var current;
   Template.home.helpers({
     list: function(){
+        Display.remove({});
         var myArray = List.find({}, {sort:{createdAt: -1}}).fetch();
-        var distinctHead = _.uniq(myArray, true, function(List) {return List.topic});
+        var distinctHead = _.uniq(myArray, false, function(List) {return List.topic});
     var valuearray= new Array();
-    for(var n = 0; n<distinctHead.length; n++)
-    {
-      valuearray[n]=0;
-    }
-    var topics = function(myArray){return _.pluck(myArray, "topic")};
-    var topicarray = topics(myArray);
+    var topics = function(myArray){return _.pluck(distinctHead, "topic")};
+    var topicarray = topics(distinctHead);
     for(var i = 0; i<topicarray.length; i++)
     {
+         valuearray[i]=0;
       for(var j = 0; j<myArray.length; j++)
       {
         if(topicarray[i]==myArray[j].topic)
@@ -38,11 +36,10 @@ if (Meteor.isClient) {
       return {
         collection: Display,
         fields: [
-          {key: 'createdAt', label: 'Date Added'},
-          {key: 'topic', label: 'Issue'},
-          {key: 'latitude', label: 'Latitude'},
-          {key: 'longitude', label: 'Longitude'},
-      {key: 'quantity', label: 'Quantity'}
+          {key: 'topic', label: 'Category'},
+          {key: 'details', label: 'Description'},
+      {key: 'createdAt', label: 'Date Added'},
+      {key: 'quantity', label: 'Quantity'},
         ]
       };
     }
@@ -63,6 +60,15 @@ if (Meteor.isClient) {
     }
 
   });
+  Template.show.events({
+      "click .btn-secondary": function(){
+      Router.go('/');
+    },
+    "click .delete": function(){
+      List.remove(this._id);
+    }
+    });
+  
 
   Template.home.events({
     /*"click .delete": function () {

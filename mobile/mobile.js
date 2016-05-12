@@ -209,6 +209,7 @@ Template.OptionalDetailsPage.events({
     var details= event.delegateTarget.details.value;
     var name= event.delegateTarget.username.value;
     Session.set("detailsSubmit",details);
+
     Session.set("nameSubmit",name);
     Session.set("showDetails", 0);
     Session.set("showConfirmation", 1);

@@ -61,10 +61,13 @@
 </template>
 <template name="ConfirmationPage">
    <h2>Report Summary:</h2>
-   {{category}}<br>
-
-   {{topic}} at ({{latitude}},{{longitude}}) <br>
-
+   <br>
+   Category: {{category}}<br>
+   Location: ({{latitude}},{{longitude}})
+   Description: {{topic}}  <br>
+<br>
+   Thank you!
+<br>
 
 
 <button type="submit" class="btn btn-secondary" value="submit">submit</button>
@@ -130,5 +133,5 @@
 <label> Optional: Provide extra detail below </label><br><br>
 		        		<input type="text" class="form-control" name="details" placeholder="It's on the side of a brick building." /> <br>
 		        		<input type="text" class="form-control" name="username" placeholder="John Doe" /> <br>
-<button class="btn btn-secondary next" >Submit</button>
+<button class="btn btn-secondary next" >Next Step</button>
 </template>
